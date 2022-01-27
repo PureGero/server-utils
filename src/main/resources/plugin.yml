@@ -1,0 +1,23 @@
+name: ${project.name}
+version: ${project.version}
+description: ${project.description}
+main: com.github.puregero.serverutils.ServerUtilsPlugin
+author: PureGero
+api-version: 1.18
+commands:
+  setplayercount:
+    description: Set the maximum player count
+    permission: serverutils.setplayercount
+  setviewdistance:
+    description: Set the view distance
+    permission: serverutils.setviewdistance
+  setsimulationdistance:
+    description: Set the simulation distance
+    permission: serverutils.setsimulationdistance
+permissions:
+  serverutils.setplayercount/:
+    default: op
+  serverutils.setviewdistance:
+    default: op
+  serverutils.setsimulationdistance:
+    default: op
