@@ -1,2 +1,2 @@
 # server-utils
-Utility commands to manage your Bukkit server
+MultiPaper-compatible utility commands to manage your Bukkit server
