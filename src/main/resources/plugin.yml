@@ -14,6 +14,9 @@ commands:
   setsimulationdistance:
     description: Set the simulation distance
     permission: serverutils.setsimulationdistance
+  ping:
+    description: Shows your ping
+    permission: serverutils.ping
 permissions:
   serverutils.setplayercount/:
     default: op
@@ -21,3 +24,5 @@ permissions:
     default: op
   serverutils.setsimulationdistance:
     default: op
+  serverutils.ping:
+    default: true

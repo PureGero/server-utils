@@ -9,6 +9,7 @@ public class ServerUtilsPlugin extends JavaPlugin {
         new SetPlayerCountCommand(this);
         new SetViewDistanceCommand(this);
         new SetSimulationDistanceCommand(this);
+        new PingCommand(this);
     }
 
 }
