@@ -27,20 +27,8 @@
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </repository>
         <repository>
-            <id>papermc-repo</id>
-            <url>https://papermc.io/repo/repository/maven-public/</url>
-        </repository>
-        <repository>
-            <id>purenetwork-repo</id>
-            <url>https://github.com/PureGero/JustSkyblock/raw/dependencies/</url>
-        </repository>
-        <repository>
             <id>clojars</id>
             <url>https://repo.clojars.org</url>
-        </repository>
-        <repository>
-            <id>mojang</id>
-            <url>https://libraries.minecraft.net/</url>
         </repository>
     </repositories>
 
@@ -49,12 +37,6 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>22.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.papermc.paper</groupId>
-            <artifactId>paper-api</artifactId>
-            <version>${spigot.version}</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>puregero.multipaper</groupId>
@@ -68,18 +50,6 @@
             <artifactId>multilib</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.mojang</groupId>
-            <artifactId>authlib</artifactId>
-            <version>3.2.38</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>puregero</groupId>
-            <artifactId>purenetworkapi</artifactId>
-            <version>1</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
