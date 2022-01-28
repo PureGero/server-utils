@@ -17,6 +17,9 @@ commands:
   ping:
     description: Shows your ping
     permission: serverutils.ping
+  subscribers:
+    description: Displays the external servers subscribed to the chunk you're standing in
+    permission: serverutils.subscribers
 permissions:
   serverutils.setplayercount/:
     default: op
@@ -25,4 +28,6 @@ permissions:
   serverutils.setsimulationdistance:
     default: op
   serverutils.ping:
+    default: true
+  serverutils.subscribers:
     default: true
