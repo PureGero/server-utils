@@ -22,7 +22,7 @@ import java.util.Objects;
 
 public class SubscribersCommand implements CommandExecutor {
     public SubscribersCommand(ServerUtilsPlugin plugin) {
-        Objects.requireNonNull(plugin.getCommand("ping")).setExecutor(this);
+        Objects.requireNonNull(plugin.getCommand("subscribers")).setExecutor(this);
     }
 
     @Override
