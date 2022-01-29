@@ -3,10 +3,12 @@ package com.github.puregero.serverutils;
 import com.github.puregero.multilib.MultiLib;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_18_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_18_R1.CraftWorld;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -18,6 +20,9 @@ public class SetViewDistanceCommand implements CommandExecutor {
         MultiLib.onString(plugin, "setviewdistance", string -> {
             int viewDistance = Integer.parseInt(string);
             ((CraftServer) Bukkit.getServer()).getHandle().setViewDistance(viewDistance);
+            for (World world : Bukkit.getWorlds()) {
+                ((CraftWorld) world).getHandle().spigotConfig.viewDistance = viewDistance;
+            }
         });
     }
 
@@ -31,6 +36,9 @@ public class SetViewDistanceCommand implements CommandExecutor {
         try {
             int viewDistance = Integer.parseInt(args[0]);
             ((CraftServer) Bukkit.getServer()).getHandle().setViewDistance(viewDistance);
+            for (World world : Bukkit.getWorlds()) {
+                ((CraftWorld) world).getHandle().spigotConfig.viewDistance = viewDistance;
+            }
             MultiLib.notify("setviewdistance", Integer.toString(viewDistance));
             sender.sendMessage(ChatColor.GREEN + "Set view distance to " + viewDistance);
         } catch (Exception e) {
