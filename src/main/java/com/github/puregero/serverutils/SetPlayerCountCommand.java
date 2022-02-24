@@ -18,6 +18,12 @@ public class SetPlayerCountCommand implements CommandExecutor {
             int playerCount = Integer.parseInt(string);
             Bukkit.setMaxPlayers(playerCount);
         });
+
+        MultiLib.onString(plugin, "getplayercount", (string, reply) -> {
+            reply.accept("setplayercount", Integer.toString(Bukkit.getMaxPlayers()));
+        });
+
+        MultiLib.notify("getplayercount", "");
     }
 
     @Override

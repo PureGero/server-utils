@@ -24,6 +24,12 @@ public class SetSimulationDistanceCommand implements CommandExecutor {
                 ((CraftWorld) world).getHandle().spigotConfig.simulationDistance = simulationDistance;
             }
         });
+
+        MultiLib.onString(plugin, "getsimulationdistance", (string, reply) -> {
+            reply.accept("setsimulationdistance", Integer.toString(Bukkit.getSimulationDistance()));
+        });
+
+        MultiLib.notify("getsimulationdistance", "");
     }
 
     @Override

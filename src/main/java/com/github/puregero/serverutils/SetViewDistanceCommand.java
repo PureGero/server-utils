@@ -24,6 +24,12 @@ public class SetViewDistanceCommand implements CommandExecutor {
                 ((CraftWorld) world).getHandle().spigotConfig.viewDistance = viewDistance;
             }
         });
+
+        MultiLib.onString(plugin, "getviewdistance", (string, reply) -> {
+            reply.accept("setviewdistance", Integer.toString(Bukkit.getViewDistance()));
+        });
+
+        MultiLib.notify("getviewdistance", "");
     }
 
     @Override
