@@ -11,6 +11,7 @@ public class ServerUtilsPlugin extends JavaPlugin {
         new SetSimulationDistanceCommand(this);
         new PingCommand(this);
         new SubscribersCommand(this);
+        new InstancesPingCommand(this);
     }
 
 }

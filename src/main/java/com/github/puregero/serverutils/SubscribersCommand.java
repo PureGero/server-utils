@@ -1,7 +1,6 @@
 package com.github.puregero.serverutils;
 
 import com.github.puregero.multilib.MultiLib;
-import net.minecraft.network.protocol.game.ServerboundChatPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.chunk.LevelChunk;
@@ -10,13 +9,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.v1_18_R1.CraftChunk;
 import org.bukkit.craftbukkit.v1_18_R1.CraftWorld;
-import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import puregero.multipaper.ChunkKey;
 import puregero.multipaper.ExternalServer;
 import puregero.multipaper.MultiPaper;
-import puregero.multipaper.externalserverprotocol.PlayerActionPacket;
 
 import java.util.Objects;
 
@@ -30,7 +27,7 @@ public class SubscribersCommand implements CommandExecutor {
         Player player = (Player) sender;
 
         if (MultiLib.isLocalPlayer(player)) {
-            MultiPaper.broadcastPacketToExternalServers(new PlayerActionPacket(((CraftPlayer) player).getHandle(), new ServerboundChatPacket("/subscribers")));
+            MultiLib.chatOnOtherServers(player, "/subscribers");
         }
 
         int cx = player.getLocation().getBlockX() >> 4;

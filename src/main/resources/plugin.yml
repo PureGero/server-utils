@@ -20,6 +20,9 @@ commands:
   subscribers:
     description: Displays the external servers subscribed to the chunk you're standing in
     permission: serverutils.subscribers
+  instancesping:
+    description: Check that all the instances are connected to eachother
+    permission: serverutils.instancesping
 permissions:
   serverutils.setplayercount/:
     default: op
@@ -30,4 +33,6 @@ permissions:
   serverutils.ping:
     default: true
   serverutils.subscribers:
+    default: true
+  serverutils.instancesping:
     default: true
