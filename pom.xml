@@ -6,7 +6,7 @@
 
     <groupId>com.github.puregero</groupId>
     <artifactId>server-utils</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <description>MultiPaper-compatible utility commands to manage your Bukkit server</description>
 
     <name>ServerUtils</name>

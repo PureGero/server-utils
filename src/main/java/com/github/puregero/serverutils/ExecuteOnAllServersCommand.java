@@ -23,7 +23,7 @@ public class ExecuteOnAllServersCommand implements CommandExecutor {
             return false;
         }
 
-        ((Player) sender).chat(StringUtils.join(args, " "));
+        ((Player) sender).chat("/" + StringUtils.join(args, " "));
 
         MultiLib.chatOnOtherServers((Player) sender, "/" + StringUtils.join(args, " "));
 
