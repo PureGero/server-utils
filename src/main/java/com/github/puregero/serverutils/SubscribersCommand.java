@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import puregero.multipaper.ChunkKey;
 import puregero.multipaper.ExternalServer;
 import puregero.multipaper.MultiPaper;
+import puregero.multipaper.MultiPaperConfig;
 
 import java.util.Objects;
 
@@ -35,20 +36,20 @@ public class SubscribersCommand implements CommandExecutor {
         ServerLevel level = ((CraftWorld) player.getWorld()).getHandle();
         if (player.getWorld().isChunkLoaded(cx, cz)) {
             LevelChunk chunk = ((CraftChunk) player.getChunk()).getHandle();
-            player.sendMessage(MultiPaper.getBungeeCordName() + "[" + cx + "," + cz + "] " + (chunk.externalOwner == null ? "null" : chunk.externalOwner.getName()) + "(" + chunk.hasExternalLockRequest + "," + (chunk.isUnsaved() ? "Unsaved" : "Saved") + "): " + chunk.externalSubscribers.stream().map(ExternalServer::getName).toList());
+            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] " + (chunk.externalOwner == null ? "null" : chunk.externalOwner.getName()) + "(" + chunk.hasExternalLockRequest + "," + (chunk.isUnsaved() ? "Unsaved" : "Saved") + "): " + chunk.externalSubscribers.stream().map(ExternalServer::getName).toList());
         } else if (level.chunkSource.chunkMap.getVisibleChunkIfPresent(ChunkPos.asLong(cx, cz)) != null) {
-            player.sendMessage(MultiPaper.getBungeeCordName() + "[" + cx + "," + cz + "] not loaded but visible " + level.chunkSource.chunkMap.getVisibleChunkIfPresent(ChunkPos.asLong(cx, cz)).getAvailableChunkNow());
+            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] not loaded but visible " + level.chunkSource.chunkMap.getVisibleChunkIfPresent(ChunkPos.asLong(cx, cz)).getAvailableChunkNow());
         } else if (level.chunkSource.chunkMap.getUpdatingChunkIfPresent(ChunkPos.asLong(cx, cz)) != null) {
-            player.sendMessage(MultiPaper.getBungeeCordName() + "[" + cx + "," + cz + "] not loaded but updating " + level.chunkSource.chunkMap.getUpdatingChunkIfPresent(ChunkPos.asLong(cx, cz)).getAvailableChunkNow());
+            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] not loaded but updating " + level.chunkSource.chunkMap.getUpdatingChunkIfPresent(ChunkPos.asLong(cx, cz)).getAvailableChunkNow());
         } else if (level.chunkSource.chunkMap.getUnloadingChunkHolder(cx, cz) != null) {
-            player.sendMessage(MultiPaper.getBungeeCordName() + "[" + cx + "," + cz + "] not loaded but unloading " + level.chunkSource.chunkMap.getUnloadingChunkHolder(cx, cz).getAvailableChunkNow());
+            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] not loaded but unloading " + level.chunkSource.chunkMap.getUnloadingChunkHolder(cx, cz).getAvailableChunkNow());
         } else {
-            player.sendMessage(MultiPaper.getBungeeCordName() + "[" + cx + "," + cz + "] not loaded");
+            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] not loaded");
         }
 
         ChunkKey key = new ChunkKey(player.getWorld().getName(), cx, cz);
         if (MultiPaper.chunkSubscribersToSet.contains(key)) {
-            player.sendMessage(MultiPaper.getBungeeCordName() + "[" + cx + "," + cz + "] toSet: " + MultiPaper.chunkSubscribersToSet.get(key).stream().map(ExternalServer::getName).toList());
+            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] toSet: " + MultiPaper.chunkSubscribersToSet.get(key).stream().map(ExternalServer::getName).toList());
         }
 
         return true;

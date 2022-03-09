@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import puregero.multipaper.MultiPaper;
+import puregero.multipaper.MultiPaperConfig;
 
 import java.util.Objects;
 
@@ -25,10 +26,10 @@ public class InstancesPingCommand implements CommandExecutor {
         }
 
         if (args.length == 0) {
-            server = MultiPaper.getBungeeCordName();
+            server = MultiPaperConfig.bungeeCordName;
             MultiLib.chatOnOtherServers(player, "/instancesping " + server);
         } else {
-            player.sendMessage(args[0] + " -> " + MultiPaper.getBungeeCordName());
+            player.sendMessage(args[0] + " -> " + MultiPaperConfig.bungeeCordName);
         }
 
         return true;
