@@ -23,6 +23,9 @@ commands:
   instancesping:
     description: Check that all the instances are connected to eachother
     permission: serverutils.instancesping
+  executeonallservers:
+    description: Run a command on all servers
+    permission: serverutils.executeonallservers
 permissions:
   serverutils.setplayercount/:
     default: op
@@ -36,3 +39,5 @@ permissions:
     default: true
   serverutils.instancesping:
     default: true
+  serverutils.executeonallservers:
+    default: op

@@ -12,6 +12,7 @@ public class ServerUtilsPlugin extends JavaPlugin {
         new PingCommand(this);
         new SubscribersCommand(this);
         new InstancesPingCommand(this);
+        new ExecuteOnAllServersCommand(this);
     }
 
 }
