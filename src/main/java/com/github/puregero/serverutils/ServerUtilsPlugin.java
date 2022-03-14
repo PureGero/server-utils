@@ -13,6 +13,7 @@ public class ServerUtilsPlugin extends JavaPlugin {
         new SubscribersCommand(this);
         new InstancesPingCommand(this);
         new ExecuteOnAllServersCommand(this);
+        new SetPersistenceCommand(this);
     }
 
 }

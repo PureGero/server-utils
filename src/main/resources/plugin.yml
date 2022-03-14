@@ -26,6 +26,9 @@ commands:
   executeonallservers:
     description: Run a command on all servers
     permission: serverutils.executeonallservers
+  setpersistence:
+    description: Set the persistence required value for nearby mobs
+    permission: serverutils.setpersistence
 permissions:
   serverutils.setplayercount/:
     default: op
@@ -40,4 +43,6 @@ permissions:
   serverutils.instancesping:
     default: true
   serverutils.executeonallservers:
+    default: op
+  serverutils.setpersistence:
     default: op
