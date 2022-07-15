@@ -15,7 +15,7 @@ public class PingCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        sender.sendMessage("Your ping is " + ((Player) sender).spigot().getPing());
+        sender.sendMessage("Your ping is " + ((Player) sender).spigot().getPing() + "ms");
 
         return true;
     }
