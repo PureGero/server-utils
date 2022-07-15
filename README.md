@@ -17,10 +17,11 @@ This is primarily just for debugging MultiPaper.
 
 ## Building
 
-1. Build MultiPaper and then run:  
+1. Build MultiPaper and then run (inside the MultiPaper directory):  
 `./gradlew publishToMavenLocal`
 
 2. Enter the server-utils directory and run:  
 `mvn`
 
-3. The plugin jar is available at `target/server-utils-1.19-v1.jar`
+3. The plugin jar is available at  
+`target/server-utils-1.19-v1.jar`
