@@ -6,14 +6,14 @@
 
     <groupId>com.github.puregero</groupId>
     <artifactId>server-utils</artifactId>
-    <version>1.0.8</version>
+    <version>1.19-v1</version>
     <description>MultiPaper-compatible utility commands to manage your Bukkit server</description>
 
     <name>PureServerUtils</name>
 
     <properties>
         <java.version>17</java.version>
-        <spigot.version>1.18.2-R0.1-SNAPSHOT</spigot.version>
+        <spigot.version>1.19-R0.1-SNAPSHOT</spigot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -58,7 +58,7 @@
         <dependency>
             <groupId>com.github.puregero</groupId>
             <artifactId>multilib</artifactId>
-            <version>1.1.1</version>
+            <version>1.1.5</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

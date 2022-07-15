@@ -7,14 +7,13 @@ import net.minecraft.world.level.chunk.LevelChunk;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_18_R2.CraftChunk;
-import org.bukkit.craftbukkit.v1_18_R2.CraftWorld;
+import org.bukkit.craftbukkit.v1_19_R1.CraftChunk;
+import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import puregero.multipaper.ChunkKey;
 import puregero.multipaper.ExternalServer;
 import puregero.multipaper.MultiPaper;
-import puregero.multipaper.MultiPaperConfig;
 
 import java.util.Objects;
 
@@ -36,20 +35,20 @@ public class SubscribersCommand implements CommandExecutor {
         ServerLevel level = ((CraftWorld) player.getWorld()).getHandle();
         if (player.getWorld().isChunkLoaded(cx, cz)) {
             LevelChunk chunk = ((CraftChunk) player.getChunk()).getHandle();
-            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] " + (chunk.externalOwner == null ? "null" : chunk.externalOwner.getName()) + "(" + chunk.hasExternalLockRequest + "," + (chunk.isUnsaved() ? "Unsaved" : "Saved") + "): " + chunk.externalSubscribers.stream().map(ExternalServer::getName).toList());
+            player.sendMessage(MultiLib.getLocalServerName() + "[" + cx + "," + cz + "] " + (chunk.externalOwner == null ? "null" : chunk.externalOwner.getName()) + "(" + chunk.hasExternalLockRequest + "," + (chunk.isUnsaved() ? "Unsaved" : "Saved") + "): " + chunk.externalSubscribers.stream().map(ExternalServer::getName).toList());
         } else if (level.chunkSource.chunkMap.getVisibleChunkIfPresent(ChunkPos.asLong(cx, cz)) != null) {
-            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] not loaded but visible " + level.chunkSource.chunkMap.getVisibleChunkIfPresent(ChunkPos.asLong(cx, cz)).getAvailableChunkNow());
+            player.sendMessage(MultiLib.getLocalServerName() + "[" + cx + "," + cz + "] not loaded but visible " + level.chunkSource.chunkMap.getVisibleChunkIfPresent(ChunkPos.asLong(cx, cz)).getAvailableChunkNow());
         } else if (level.chunkSource.chunkMap.getUpdatingChunkIfPresent(ChunkPos.asLong(cx, cz)) != null) {
-            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] not loaded but updating " + level.chunkSource.chunkMap.getUpdatingChunkIfPresent(ChunkPos.asLong(cx, cz)).getAvailableChunkNow());
+            player.sendMessage(MultiLib.getLocalServerName() + "[" + cx + "," + cz + "] not loaded but updating " + level.chunkSource.chunkMap.getUpdatingChunkIfPresent(ChunkPos.asLong(cx, cz)).getAvailableChunkNow());
         } else if (level.chunkSource.chunkMap.getUnloadingChunkHolder(cx, cz) != null) {
-            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] not loaded but unloading " + level.chunkSource.chunkMap.getUnloadingChunkHolder(cx, cz).getAvailableChunkNow());
+            player.sendMessage(MultiLib.getLocalServerName() + "[" + cx + "," + cz + "] not loaded but unloading " + level.chunkSource.chunkMap.getUnloadingChunkHolder(cx, cz).getAvailableChunkNow());
         } else {
-            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] not loaded");
+            player.sendMessage(MultiLib.getLocalServerName() + "[" + cx + "," + cz + "] not loaded");
         }
 
         ChunkKey key = new ChunkKey(player.getWorld().getName(), cx, cz);
         if (MultiPaper.chunkSubscribersToSet.contains(key)) {
-            player.sendMessage(MultiPaperConfig.bungeeCordName + "[" + cx + "," + cz + "] toSet: " + MultiPaper.chunkSubscribersToSet.get(key).stream().map(ExternalServer::getName).toList());
+            player.sendMessage(MultiLib.getLocalServerName() + "[" + cx + "," + cz + "] toSet: " + MultiPaper.chunkSubscribersToSet.get(key).stream().map(ExternalServer::getName).toList());
         }
 
         return true;

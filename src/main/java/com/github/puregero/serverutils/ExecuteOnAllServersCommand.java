@@ -1,7 +1,6 @@
 package com.github.puregero.serverutils;
 
 import com.github.puregero.multilib.MultiLib;
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -23,9 +22,9 @@ public class ExecuteOnAllServersCommand implements CommandExecutor {
             return false;
         }
 
-        ((Player) sender).chat("/" + StringUtils.join(args, " "));
+        ((Player) sender).chat("/" + String.join(" ", args));
 
-        MultiLib.chatOnOtherServers((Player) sender, "/" + StringUtils.join(args, " "));
+        MultiLib.chatOnOtherServers((Player) sender, "/" + String.join(" ", args));
 
         return true;
     }
