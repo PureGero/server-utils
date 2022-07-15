@@ -20,7 +20,7 @@ This is primarily just for debugging MultiPaper.
 1. Build MultiPaper and then run:  
 `./gradlew publishToMavenLocal`
 
-2. Enter the server-utils directory and run:
+2. Enter the server-utils directory and run:  
 `mvn`
 
 3. The plugin jar is available at `target/server-utils-1.19-v1.jar`
