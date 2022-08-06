@@ -6,6 +6,7 @@ This is primarily just for debugging MultiPaper.
 
 ```
 /executeonallservers
+/executeon
 /instancesping
 /ping
 /setpersistence
