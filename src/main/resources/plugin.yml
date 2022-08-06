@@ -51,3 +51,5 @@ permissions:
     default: op
   serverutils.setpersistence:
     default: op
+  serverutils.adminmessage:
+    default: false

@@ -1,6 +1,8 @@
 package com.github.puregero.serverutils;
 
 import com.github.puregero.multilib.MultiLib;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -46,6 +48,10 @@ public class SetSimulationDistanceCommand implements CommandExecutor {
                 ((CraftWorld) world).getHandle().spigotConfig.simulationDistance = simulationDistance;
             }
             MultiLib.notify("setsimulationdistance", Integer.toString(simulationDistance));
+
+            MultiLib.getAllOnlinePlayers().stream().filter(player -> player.hasPermission("serverutils.adminmessage")).forEach(player ->
+                    player.sendMessage(Component.text("[" + sender.getName() + ": Set simulation distance to " + simulationDistance + "]").color(NamedTextColor.GRAY))
+            );
             sender.sendMessage(ChatColor.GREEN + "Set simulation distance to " + simulationDistance);
         } catch (Exception e) {
             sender.sendMessage(ChatColor.RED + e.getClass().getSimpleName() + ": " + e.getMessage());

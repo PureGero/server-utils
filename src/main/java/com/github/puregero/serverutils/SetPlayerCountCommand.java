@@ -1,6 +1,8 @@
 package com.github.puregero.serverutils;
 
 import com.github.puregero.multilib.MultiLib;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -37,6 +39,10 @@ public class SetPlayerCountCommand implements CommandExecutor {
             int playerCount = Integer.parseInt(args[0]);
             Bukkit.setMaxPlayers(playerCount);
             MultiLib.notify("setplayercount", Integer.toString(playerCount));
+
+            MultiLib.getAllOnlinePlayers().stream().filter(player -> player.hasPermission("serverutils.adminmessage")).forEach(player ->
+                    player.sendMessage(Component.text("[" + sender.getName() + ": Set player count to " + playerCount + "]").color(NamedTextColor.GRAY))
+            );
             sender.sendMessage(ChatColor.GREEN + "Set player count to " + playerCount);
         } catch (Exception e) {
             sender.sendMessage(ChatColor.RED + e.getClass().getSimpleName() + ": " + e.getMessage());
