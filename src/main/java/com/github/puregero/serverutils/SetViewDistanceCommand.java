@@ -1,6 +1,8 @@
 package com.github.puregero.serverutils;
 
 import com.github.puregero.multilib.MultiLib;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.World;
@@ -46,6 +48,10 @@ public class SetViewDistanceCommand implements CommandExecutor {
                 ((CraftWorld) world).getHandle().spigotConfig.viewDistance = viewDistance;
             }
             MultiLib.notify("setviewdistance", Integer.toString(viewDistance));
+
+            MultiLib.getAllOnlinePlayers().stream().filter(player -> player.hasPermission("serverutils.adminmessage")).forEach(player ->
+                    player.sendMessage(Component.text("[" + sender.getName() + ": Set view distance to " + viewDistance + "]").color(NamedTextColor.GRAY))
+            );
             sender.sendMessage(ChatColor.GREEN + "Set view distance to " + viewDistance);
         } catch (Exception e) {
             sender.sendMessage(ChatColor.RED + e.getClass().getSimpleName() + ": " + e.getMessage());
