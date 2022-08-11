@@ -2,6 +2,7 @@ package com.github.puregero.serverutils;
 
 import com.github.puregero.multilib.MultiLib;
 import org.apache.commons.lang.StringUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,6 +15,10 @@ import java.util.Objects;
 public class ExecuteOnAllServersCommand implements CommandExecutor {
     public ExecuteOnAllServersCommand(ServerUtilsPlugin plugin) {
         Objects.requireNonNull(plugin.getCommand("executeonallservers")).setExecutor(this);
+
+        MultiLib.onString(plugin, "executeonallservers", string -> {
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), string);
+        });
     }
 
     @Override
@@ -23,9 +28,16 @@ public class ExecuteOnAllServersCommand implements CommandExecutor {
             return false;
         }
 
-        ((Player) sender).chat("/" + StringUtils.join(args, " "));
+        String commandStr = StringUtils.join(args, " ");
 
-        MultiLib.chatOnOtherServers((Player) sender, "/" + StringUtils.join(args, " "));
+        if (!(sender instanceof Player player)) {
+            MultiLib.notify("executeonallservers", commandStr);
+            Bukkit.dispatchCommand(Bukkit.getConsoleSender(), commandStr);
+            return true;
+        }
+
+        MultiLib.chatOnOtherServers(player, "/" + commandStr);
+        player.chat("/" + commandStr);
 
         return true;
     }
