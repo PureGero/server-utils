@@ -30,6 +30,11 @@ public class SetPlayerCountCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        if (Bukkit.getPluginManager().getPlugin("SeamlessReconnect") != null) {
+            sender.sendMessage(ChatColor.RED + "Please use /srsetmaxplayers instead.");
+            return false;
+        }
+
         if (args.length == 0) {
             sender.sendMessage(ChatColor.RED + "Usage: /" + label + " <player count>");
             return false;
